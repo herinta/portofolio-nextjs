@@ -29,9 +29,18 @@ const projectsData = [
     title: "Noms Kopi Meteseh",
     description: "Project 4 description",
     image: "/images/projects/p4.png",
-    tag: ["All", "Mobile"],
+    tag: ["All", "UI/UX"],
     gitUrl: "/",
     previewUrl: "/",
+  },
+  {
+    id: 4,
+    title: "PWK Consultant",
+    description: "Project 4 description",
+    image: "/images/projects/p3.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "https://pwk-profile-company.netlify.app/",
   },
  
 ];
@@ -73,7 +82,7 @@ const ProjectsSection = () => {
         <ProjectTag
           onClick={handleTagChange}
           name="UI/UX"
-          isSelected={tag === "Mobile"}
+          isSelected={tag === "UI/UX"}
         />
       </div>
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
