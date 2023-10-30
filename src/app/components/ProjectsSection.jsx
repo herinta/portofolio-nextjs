@@ -17,7 +17,7 @@ const projectsData = [
   {
     id: 2,
     title: "SILAW Website",
-    description: "Web untuk konsultasi hukum online",
+    description: "Web for online legal consultation",
     image: "/images/projects/p1.png",
     tag: ["All", "Web"],
     gitUrl: "/",
@@ -25,9 +25,9 @@ const projectsData = [
   },
   
   {
-    id: 4,
+    id: 3,
     title: "Noms Kopi Meteseh",
-    description: "Project 4 description",
+    description: "UI/UX Design Noms Kopi Application",
     image: "/images/projects/p4.png",
     tag: ["All", "UI/UX"],
     gitUrl: "/",
@@ -36,11 +36,20 @@ const projectsData = [
   {
     id: 4,
     title: "PWK Consultant",
-    description: "Project 4 description",
+    description: "web company profile of CV. Putra Waluya Karya",
     image: "/images/projects/p3.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "https://pwk-profile-company.netlify.app/",
+  },
+  {
+    id: 5,
+    title: "TISSAVH Smart Health Care Monitoring System",
+    description: "Diabetic patient monitoring web program from home, created using a combination of laravel and react",
+    image: "/images/projects/p5.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
   },
  
 ];
