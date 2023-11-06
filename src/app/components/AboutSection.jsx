@@ -63,7 +63,7 @@ const AboutSection = () => {
           crafting captivating UI/UX designs. With our dedication to cutting-edge technology and 
           meticulous design, we are ready to help you bring your vision to life. We believe that 
           an attractive and high-performance website is the key to online success, and we will 
-          work tirelessly to deliver the best results for your project. Customer support is our top priority, and we're committed to ensuring your satisfaction every step of the way.
+          work tirelessly to deliver the best results for your project. Customer support is our top priority, and we are committed to ensuring your satisfaction every step of the way.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
