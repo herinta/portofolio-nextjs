@@ -24,4 +24,21 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    overflow-x: hidden;
 }
+
+.half-circle {
+  border-top-left-radius: 250px; /* for small screen size */
+  border-top-right-radius: 250px; /* for small screen size */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .half-circle {
+      border-top-left-radius: 550px; /* for large screen size */
+      border-top-right-radius: 550px; /* for large screen size */
+  }
+}
+

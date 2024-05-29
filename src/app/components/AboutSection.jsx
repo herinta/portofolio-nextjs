@@ -1,97 +1,59 @@
 "use client";
-import React, { useTransition, useState } from "react";
+import React, { useEffect } from "react";
+import { delay, motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import TabButton from "./TabButton";
-
-const TAB_DATA = [
-  {
-    title: "Skills",
-    id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        
-        <li>UI/UX</li>
-        <li>HTML, CSS</li>
-        <li>JavaScript</li>
-        <li>React</li>
-      </ul>
-    ),
-  },
- 
-  {
-    title: "Certifications",
-    id: "certifications",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Oracle : Database Programming With SQL</li>
-        <li>Basic Programming Web</li>
-        <li>Fundamental ReactJS</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Award",
-    id: "award",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>2nd APSI Game Programming Competition</li>
-        <li>2nd National Web Programming Competition</li>
-        <li>2nd Permata Youth Preneur National Competition</li>
-      </ul>
-    ),
-  },
-];
+import AchievementsSection from "./AchievementsSection";
 
 const AboutSection = () => {
-  const [tab, setTab] = useState("skills");
-  const [isPending, startTransition] = useTransition();
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
 
-  const handleTabChange = (id) => {
-    startTransition(() => {
-      setTab(id);
-    });
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 150 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
   return (
-    <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about-image.jpeg" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-white mb-4">About Us</h2>
+    <section id="about" className="pt-28">
+      <div
+        ref={ref}
+        className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16"
+      >
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={sectionVariants}
+        >
+          <Image src="/images/about-image.jpeg" width={500} height={500} />
+        </motion.div>
+        <motion.div
+          className="mt-4 md:mt-0 text-left flex flex-col h-full"
+          initial="hidden"
+          animate={controls}
+          variants={sectionVariants}
+        >
+          <h2 className="text-4xl font-bold mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-          We are a team of experts specializing in custom website development using React.js and 
-          crafting captivating UI/UX designs. With our dedication to cutting-edge technology and 
-          meticulous design, we are ready to help you bring your vision to life. We believe that 
-          an attractive and high-performance website is the key to online success, and we will 
-          work tirelessly to deliver the best results for your project. Customer support is our top priority, and we are committed to ensuring your satisfaction every step of the way.
+            I am an expert who specializes in custom website development using
+            React.js and creating beautiful UI/UX designs. With our dedication
+            to cutting-edge technology and thoughtful design, we are ready to
+            help you realize your vision. We believe that an attractive and
+            high-performing website is the key to online success, and we will
+            work tirelessly to deliver the best results for your project.
+            Customer support is our top priority, and we are committed to
+            ensuring your satisfaction every step of the way.
           </p>
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              {" "}
-              Skills{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("certifications")}
-              active={tab === "certifications"}
-            >
-              {" "}
-              Certifications{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("award")}
-              active={tab === "award"}
-            >
-              {" "}
-              Award{" "}
-            </TabButton>
+          <div className="w-full">
+            <AchievementsSection />
           </div>
-          <div className="mt-8">
-            {TAB_DATA.find((t) => t.id === tab).content}
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
